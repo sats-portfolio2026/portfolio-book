@@ -1,0 +1,726 @@
+@charset "UTF-8";
+
+
+/* ========================================
+基本設定
+======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #e0e0e0;
+    font-family: "Mochiy Pop One", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* ========================================
+本エリア
+======================================== */
+
+.book-area {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ========================================
+本
+======================================== */
+
+#book {
+    position: relative;
+    margin: 0 auto;
+}
+
+/* ========================================
+StPageFlip
+======================================== */
+
+.stf__parent,
+.stf__block {
+    margin: 0 auto !important;
+}
+
+/* ========================================
+ページ共通
+======================================== */
+
+.page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #fffdf7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 45px;
+    overflow: hidden;
+    text-align: center;
+}
+
+
+.book-page {
+    box-shadow:
+    inset 0 0 25px rgba(80, 60, 40, 0.12),
+    0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ========================================
+文字
+======================================== */
+
+.page h1 {
+    margin: 0 0 60px;
+    padding-bottom: 10px;
+    display: inline-block;
+    color: #5c4a3d;
+    font-size: 30px;
+    border-bottom: 2px solid #d4c3a3;
+}
+
+
+.page h2 {
+    margin: 0;
+    font-size: clamp(18px, 2.0vw, 26px);
+}
+
+.page p {
+    margin: 0;
+    font-size: clamp(16px, 1.8vw, 24px);
+}
+
+/* ========================================
+画像 共通
+======================================== */
+
+.page img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* ========================================
+ページ番号
+======================================== */
+
+.page-number {
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+    color: #9b8a78;
+    font-family: Georgia, serif;
+    font-size: 12px;
+    line-height: 1;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* ========================================
+目次
+======================================== */
+
+.contents-list {
+    width: 100%;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(25px, 6vw, 40px);
+}
+
+.contents-list li {
+    width: 100%;
+    text-align: center;
+}
+
+.contents-list a {
+    display: block;
+    color: #555;
+    text-align: center;
+    text-decoration: none;
+    font-size: 23px;
+    transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.contents-list a span {
+    text-decoration: none;
+}
+
+.contents-list a::before {
+    content: "🌱";
+    display: inline-block;
+    margin-right: 8px;
+    font-size: clamp(15px, 2.5vw, 22px);
+    transition: transform 0.3s ease;
+}
+
+
+.contents-list a:hover {
+    color: #c89f65;
+}
+
+
+.contents-list a:hover::before {
+    transform:
+    translateY(-4px) rotate(10deg) scale(1.15);
+}
+
+
+/* ========================================
+あとがき
+======================================== */
+
+.epilogue-page {
+    background-color: #e0e0e0;
+}
+
+
+/* ========================================
+隠しページ
+======================================== */
+
+.hidden-page {
+    position: relative;
+    padding: 0;
+    background-color: #e0e0e0;
+}
+
+
+
+.sata-logo {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    z-index: 2;
+    color: #5c4a3d;
+    font-family: "Mochiy Pop One", sans-serif;
+    font-size: clamp(25px, 6vw, 80px);
+    transform: rotate(-10deg);
+    transform-origin: left bottom;
+}
+
+
+/* ========================================
+始まり
+======================================== */
+
+.front-page {
+    position: relative;
+    background-color: #e0e0e0;
+}
+
+
+.front-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(100% - 30px);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+
+/* ========================================
+表紙
+======================================== */
+
+.front-cover {
+    background-color: #e0e0e0;
+    padding: 0;
+}
+
+
+.front-cover img {
+    width: 100%;
+    height: auto;
+    box-shadow:
+    0 0 15px rgba(80, 60, 40, 0.4);
+}
+
+
+/* ========================================
+START
+======================================== */
+
+.start-page {
+    position: relative;
+}
+
+
+.start-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(100% - 30px);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/* ========================================
+ABOUT
+======================================== */
+
+.about-text {
+    width: 90%;
+    max-width: 600px;
+    color: #5c4a3d;
+    line-height: 2.2;
+    letter-spacing: 0.08em;
+    text-align: center;
+}
+
+.about-text p {
+    margin: 0;
+}
+
+.about-page h1,
+.about-page .about-text {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.about-leaf {
+    margin-top: 5px;
+    margin-bottom: 30px;
+    font-size: 50px;
+    line-height: 1;
+    transform: rotate(-8deg);
+}
+
+/* ========================================
+SKILL
+======================================== */
+
+.skill-page {
+    position: relative;
+}
+
+.skill-story {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.skill-item {
+    position: relative;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #d4c3a3;
+}
+
+.skill-item:last-child {
+    border-bottom: none;
+}
+
+.skill-item h2 {
+    margin: 0 0 6px;
+    color: #5c4a3d;
+}
+
+.skill-tools {
+    margin: 0 0 8px !important;
+    color: #9b8a78;
+    font-family: Georgia, serif;
+    font-size: clamp(14px, 1.5vw, 22px) !important;
+}
+
+.skill-text {
+    margin: 0 !important;
+    color: #555;
+    line-height: 1.7;
+
+}
+
+
+/* ========================================
+WORKS
+======================================== */
+
+.works-story {
+    width: 100%;
+    text-align: left;
+}
+
+.works-story-info {
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto 30px;
+    color: #5c4a3d;
+    font-family: Georgia, serif;
+    font-size: clamp(11px, 1.4vw, 16px);
+    line-height: 2;
+}
+
+.works-story-info p {
+    margin: 0;
+}
+
+.works-story-text {
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(212, 195, 163, 0.5);
+    color: #5c4a3d;
+    line-height: 2;
+    text-align: center;
+}
+
+.works-story-text p {
+    margin: 0;
+}
+
+.works-story-link {
+    display: inline-block;
+    margin-left: auto;
+    margin-top: 15px;
+    flex-shrink: 0;
+    padding: 7px 16px;
+    color: #555;
+    background-color: #fffdf7;
+    border: 2px solid #d4c3a3;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 18px;
+    white-space: nowrap;
+    box-shadow:
+    0 2px 6px rgba(80, 60, 40, 0.12);
+
+    transition:
+        color 0.3s ease,
+        background-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.works-story-link::before {
+    content: "🌱";
+    display: inline-block;
+    margin-right: 6px;
+    transition: transform 0.3s ease;
+}
+
+.works-story-link:hover {
+    color: #fff;
+    background-color: #c89f65;
+    transform: translateY(-5px);
+    box-shadow:
+    0 5px 10px rgba(80, 60, 40, 0.18);
+}
+
+.works-story-link:hover::before {
+    transform:
+    translateY(-3px) rotate(10deg) scale(1.15);
+}
+
+/* ========================================
+CONTACT
+======================================== */
+
+.contact-page {
+    position: relative;
+}
+
+.contact-page p {
+    margin: 0;
+}
+
+.mail-link {
+    position: relative;
+    z-index: 20;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 15px;
+    color: #555;
+    background-color: #fffdf7;
+    border: 1px solid #d4c3a3;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.mail-link:hover {
+    color: #fff;
+    background-color: #c89f65;
+    transform: translateY(-4px);
+}
+
+.contact-image {
+    position: absolute;
+    z-index: 1;
+    width: 65% !important;
+    height: auto !important;
+    top: 40%;
+    left: 40%;
+    object-fit: contain !important;
+    pointer-events: none;
+}
+
+/* ========================================
+ポップアップ
+======================================== */
+
+.image-popup {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.image-popup:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+.image-popup img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+}
+
+.popup-close {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    color: #fff;
+    font-size: clamp(25px, 5vw, 40px);
+    text-decoration: none;
+}
+
+/* ========================================
+   おしまい
+======================================== */
+
+.end-page {
+    position: relative;
+}
+
+.end-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(100% - 30px);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+
+/* ========================================
+   おしまい 奥付
+======================================== */
+
+.end-credit {
+    position: absolute;
+    left: 5%;
+    bottom: 5%;
+    color: #8b7a68;
+    font-size: 10px;
+    line-height: 1.8;
+    text-align: left;
+    letter-spacing: 0.05em;
+}
+
+/* ========================================
+   裏表紙
+======================================== */
+
+.back-cover {
+    background-color: #e0e0e0;
+    padding: 0;
+}
+
+.back-cover img {
+    width: 100%;
+    height: auto;
+    box-shadow:
+        0 0 15px rgba(80, 60, 40, 0.4);
+}
+
+/* ========================================
+   最後
+======================================== */
+
+.final-page {
+    position: relative;
+    background-color: #e0e0e0;
+}
+
+.final-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(100% - 30px);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/* ========================================
+最後 はじまりにもどるよ
+======================================== */
+
+.final-link {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    width: auto;
+    margin: 0;
+}
+
+.final-link a {
+    white-space: nowrap;
+}
+
+/* ========================================
+900px以下
+======================================== */
+
+@media screen and (max-width: 899px) {
+    .page h1 {
+        margin: 0 0 90px;
+    }
+
+    .page h2 {
+        font-size: 24px;
+    }
+
+    .page p {
+        font-size: 22px;
+    }
+
+    .end-credit {
+        font-size: 12px;
+    }
+
+    .contents-list a {
+        font-size: 26px;
+    }
+
+    .works-story-link {
+        font-size: 17px;
+    }
+
+    .mail-link {
+        font-size: 17px;
+    }
+}
+
+
+/* ========================================
+550px以下
+======================================== */
+
+@media screen and (max-width: 549px) {
+    .page h1 {
+        font-size: 25px;
+
+        margin: 0 0 45px;
+    }
+
+    .page h2 {
+        font-size: 17px;
+    }
+
+    .page p {
+        font-size: 15px;
+    }
+
+    .contents-list a {
+        font-size: 20px;
+    }
+
+    .skill-item {
+
+        padding-bottom: 10px;
+    }
+
+    .end-credit {
+        font-size: 10px;
+    }
+
+    .works-story-link {
+        font-size: 14px;
+    }
+
+    .mail-link {
+        font-size: 14px;
+    }
+}
+
+
+/* ========================================
+400px以下
+======================================== */
+
+@media screen and (max-width: 399px) {
+
+    .page {
+
+        padding: 20px;
+    }
+
+    .page h1 {
+        font-size: 22px;
+        margin: 0 0 35px;
+    }
+
+    .page h2 {
+        font-size: 16px;
+    }
+
+    .contents-list a {
+        font-size: 18px;
+    }
+
+    .page p {
+        font-size: 13px;
+    }
+
+    .end-credit {
+        font-size: 9px;
+    }
+
+    .about-leaf {
+        font-size: 45px;
+    }
+
+    .works-story-link {
+        font-size: 12px;
+    }
+
+    .mail-link {
+        font-size: 12px;
+    }
+
+}
